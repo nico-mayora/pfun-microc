@@ -1,0 +1,147 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nico/Documents/Fing/fp/tarea/plog-microc/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20220227.0/
+ADD	src/MachineLang.hs	/^           | ADD$/;"	c
+And	src/Syntax.hs	/^    = Or | And | Equ | Less $/;"	c
+Assign	src/Syntax.hs	/^    | Assign   Name Expr$/;"	c
+BOp	src/Syntax.hs	/^data BOp$/;"	t
+Binary	src/Syntax.hs	/^    | Binary   BOp Expr Expr$/;"	c
+Body	src/Syntax.hs	/^type Body = [Stmt]$/;"	t
+CMP	src/MachineLang.hs	/^           | CMP$/;"	c
+CharLit	src/Syntax.hs	/^    | CharLit  Char$/;"	c
+Code	src/MachineLang.hs	/^type Code = [Instr]$/;"	t
+Com	src/Syntax.hs	/^    = Com Stmt$/;"	c
+CompoundStmt	src/Syntax.hs	/^data CompoundStmt$/;"	t
+Conf	src/Interpreter.hs	/^type Conf = (Stack,Env)$/;"	t
+DIV	src/MachineLang.hs	/^           | DIV$/;"	c
+Decl	src/Syntax.hs	/^    | Decl VarDef$/;"	c
+Div	src/Syntax.hs	/^    | Plus | Minus | Mult | Div | Mod$/;"	c
+DumpMach	src/MicroC.hs	/^data Flag = DumpOpt | DumpMach$/;"	c
+DumpOpt	src/MicroC.hs	/^data Flag = DumpOpt | DumpMach$/;"	c
+Duplicated	src/TypeChecker.hs	/^  = Duplicated Name$/;"	c
+Env	src/Interpreter.hs	/^type Env = [(Var,Integer)]$/;"	t
+Env	src/TypeChecker.hs	/^type Env = [(Name, Type)]$/;"	t
+EnvError	src/TypeChecker.hs	/^type EnvError = (Env, [Error])$/;"	t
+Equ	src/Syntax.hs	/^    = Or | And | Equ | Less $/;"	c
+Error	src/TypeChecker.hs	/^data Error$/;"	t
+Expected	src/TypeChecker.hs	/^  | Expected Type Type$/;"	c
+Expr	src/Syntax.hs	/^data Expr$/;"	t
+Flag	src/MicroC.hs	/^data Flag = DumpOpt | DumpMach$/;"	t
+Generator	src/Generator.hs	/^module Generator where$/;"	m
+GetChar	src/Syntax.hs	/^    | GetChar$/;"	c
+If	src/Syntax.hs	/^    | If      Expr Body Body$/;"	c
+Instr	src/MachineLang.hs	/^data Instr = NEG$/;"	t
+Interpreter	src/Interpreter.hs	/^module Interpreter where$/;"	m
+JMPZ	src/MachineLang.hs	/^           | JMPZ  Shift$/;"	c
+JUMP	src/MachineLang.hs	/^           | JUMP  Shift$/;"	c
+LOAD	src/MachineLang.hs	/^           | LOAD  Var$/;"	c
+Less	src/Syntax.hs	/^    = Or | And | Equ | Less $/;"	c
+MOD	src/MachineLang.hs	/^           | MOD$/;"	c
+MUL	src/MachineLang.hs	/^           | MUL$/;"	c
+MachineLang	src/MachineLang.hs	/^module MachineLang where$/;"	m
+Main	src/MicroC.hs	/^module Main where$/;"	m
+MainBody	src/Syntax.hs	/^type MainBody = [CompoundStmt]$/;"	t
+Minus	src/Syntax.hs	/^    | Plus | Minus | Mult | Div | Mod$/;"	c
+Mod	src/Syntax.hs	/^    | Plus | Minus | Mult | Div | Mod$/;"	c
+Mult	src/Syntax.hs	/^    | Plus | Minus | Mult | Div | Mod$/;"	c
+NEG	src/MachineLang.hs	/^data Instr = NEG$/;"	c
+Name	src/Syntax.hs	/^type Name$/;"	t
+NatLit	src/Syntax.hs	/^    | NatLit   Integer$/;"	c
+Neg	src/Syntax.hs	/^data UOp = Not | Neg$/;"	c
+Not	src/Syntax.hs	/^data UOp = Not | Neg$/;"	c
+Optimizer	src/Optimizer.hs	/^module Optimizer where$/;"	m
+Or	src/Syntax.hs	/^    = Or | And | Equ | Less $/;"	c
+PUSH	src/MachineLang.hs	/^           | PUSH  Integer$/;"	c
+Plus	src/Syntax.hs	/^    | Plus | Minus | Mult | Div | Mod$/;"	c
+Program	src/Syntax.hs	/^    = Program MainBody$/;"	c
+Program	src/Syntax.hs	/^newtype Program$/;"	t
+PutChar	src/Syntax.hs	/^    | PutChar Expr$/;"	c
+READ	src/MachineLang.hs	/^           | READ$/;"	c
+SKIP	src/MachineLang.hs	/^           | SKIP$/;"	c
+STORE	src/MachineLang.hs	/^           | STORE Var$/;"	c
+SUB	src/MachineLang.hs	/^           | SUB$/;"	c
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+Shift	src/MachineLang.hs	/^type Shift = Int$/;"	t
+Stack	src/Interpreter.hs	/^type Stack = [Integer]$/;"	t
+Stmt	src/Syntax.hs	/^data Stmt$/;"	t
+StmtExpr	src/Syntax.hs	/^    = StmtExpr  Expr$/;"	c
+Syntax	src/Syntax.hs	/^module Syntax where$/;"	m
+TokenParser	src/Syntax.hs	/^TokenParser{ parens     = m_parens$/;"	f
+TyChar	src/Syntax.hs	/^data Type = TyInt | TyChar  $/;"	c
+TyInt	src/Syntax.hs	/^data Type = TyInt | TyChar  $/;"	c
+Type	src/Syntax.hs	/^data Type = TyInt | TyChar  $/;"	t
+TypeChecker	src/TypeChecker.hs	/^module TypeChecker where$/;"	m
+TypeError	src/TypeChecker.hs	/^type TypeError = (Type, [Error])$/;"	t
+UOp	src/Syntax.hs	/^data UOp = Not | Neg$/;"	t
+Unary	src/Syntax.hs	/^    | Unary    UOp Expr$/;"	c
+Undefined	src/TypeChecker.hs	/^  | Undefined Name$/;"	c
+Var	src/MachineLang.hs	/^type Var   = String$/;"	t
+Var	src/Syntax.hs	/^    = Var      Name$/;"	c
+VarDef	src/Syntax.hs	/^data VarDef = VarDef Type Name $/;"	c
+VarDef	src/Syntax.hs	/^data VarDef = VarDef Type Name $/;"	t
+WRITE	src/MachineLang.hs	/^           | WRITE$/;"	c
+While	src/Syntax.hs	/^    | While   Expr Body$/;"	c
+bodyparser	src/Syntax.hs	/^    =   m_braces (stmtparser `sepEndBy` m_semi)$/;"	f
+checkExpr	src/TypeChecker.hs	/^checkExpr _ _ = []$/;"	f
+checkExpr	src/TypeChecker.hs	/^checkExpr env (Assign name expr) = if null $ usedInEnv env name then Undefined name : checkExpr /;"	f
+checkExpr	src/TypeChecker.hs	/^checkExpr env (Binary _ expr1 expr2) = checkExpr env expr1 ++ checkExpr env expr2$/;"	f
+checkExpr	src/TypeChecker.hs	/^checkExpr env (Unary _ expr) = checkExpr env expr$/;"	f
+checkExpr	src/TypeChecker.hs	/^checkExpr env (Var name) = [Undefined name | null $ usedInEnv env name]$/;"	f
+checkNames	src/TypeChecker.hs	/^checkNames (Program mb) env = snd $ foldl processLine (env, []) mb$/;"	f
+checkNamesDecl	src/TypeChecker.hs	/^checkNamesDecl (env, errors) (VarDef varType name) =$/;"	f
+checkNamesStmt	src/TypeChecker.hs	/^checkNamesStmt (env, errors) (If expr body1 body2) = checkExpr env expr ++ checkNamesBody1 ++ ch/;"	f
+checkNamesStmt	src/TypeChecker.hs	/^checkNamesStmt (env, errors) (PutChar expr) = errors ++ checkExpr env expr$/;"	f
+checkNamesStmt	src/TypeChecker.hs	/^checkNamesStmt (env, errors) (StmtExpr expr) = errors ++ checkExpr env expr$/;"	f
+checkNamesStmt	src/TypeChecker.hs	/^checkNamesStmt (env, errors) (While expr body) = checkExpr env expr ++ checkNamesBody$/;"	f
+checkProgram	src/TypeChecker.hs	/^checkProgram prg =$/;"	f
+checkTypes	src/TypeChecker.hs	/^checkTypes env (Program mb) = snd $ foldl processLine (env, []) mb$/;"	f
+compile	src/MicroC.hs	/^compile prg = do  ast  <- parser prg$/;"	f
+compoundstmtparser	src/Syntax.hs	/^compoundstmtparser =   Com <$> stmtparser$/;"	f
+def	src/Syntax.hs	/^def = emptyDef{ commentStart = "(*"$/;"	f
+errBody	src/TypeChecker.hs	/^errBody env stmts = snd $ foldl processStmt (env, []) stmts$/;"	f
+expType	src/TypeChecker.hs	/^expType env (Assign name exp) =$/;"	f
+expType	src/TypeChecker.hs	/^expType env (Binary bop exp1 exp2) -- TODO: revisar cantidad & orden de errores$/;"	f
+expType	src/TypeChecker.hs	/^expType env (CharLit _) = (TyChar, [])$/;"	f
+expType	src/TypeChecker.hs	/^expType env (NatLit _) = (TyInt, [])$/;"	f
+expType	src/TypeChecker.hs	/^expType env (Unary _ exp) =$/;"	f
+expType	src/TypeChecker.hs	/^expType env (Var name) = (snd . head $ filter (\\x -> fst x == name) env, [])$/;"	f
+expType	src/TypeChecker.hs	/^expType env GetChar = (TyChar, [])$/;"	f
+exprparser	src/Syntax.hs	/^exprparser = buildExpressionParser table term <?> "expression"$/;"	f
+g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
+g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
+generate	src/Generator.hs	/^generate = undefined$/;"	f
+getProg	src/TypeChecker.hs	/^getProg (Left _) = Program []$/;"	f
+getProg	src/TypeChecker.hs	/^getProg (Right p) = p$/;"	f
+interp	src/Interpreter.hs	/^interp = undefined$/;"	f
+main	src/MicroC.hs	/^main = do args <- getArgs$/;"	f
+mainbodyparser	src/Syntax.hs	/^mainbodyparser = compoundstmtparser `sepEndBy` m_semi$/;"	f
+optimize	src/Optimizer.hs	/^optimize = undefined$/;"	f
+options	src/MicroC.hs	/^options = [ Option ['o']  ["dump-opt"]   (NoArg DumpOpt)$/;"	f
+parser	src/Syntax.hs	/^parser = either (Left . show) Right . parse (programParser <* eof) ""$/;"	f
+process	src/MicroC.hs	/^process opts (ast,cod) = do when (elem DumpOpt  opts) (print ast)$/;"	f
+processStmt	src/TypeChecker.hs	/^processStmt (env, errs) (If expr body1 body2) =$/;"	f
+processStmt	src/TypeChecker.hs	/^processStmt (env, errs) (PutChar expr) =$/;"	f
+processStmt	src/TypeChecker.hs	/^processStmt (env, errs) (StmtExpr expr) = (env, errs ++ snd (expType env expr))$/;"	f
+processStmt	src/TypeChecker.hs	/^processStmt (env, errs) (While expr body) =$/;"	f
+programParser	src/Syntax.hs	/^    = do m_whiteSpace$/;"	f
+s:l	Session.vim	/^let s:l = 93 - ((23 * winheight(0) + 13) \/ 27)$/;"	v
+s:save_winminheight	Session.vim	/^let s:save_winminheight = &winminheight$/;"	v
+s:save_winminwidth	Session.vim	/^let s:save_winminwidth = &winminwidth$/;"	v
+s:shortmess_save	Session.vim	/^let s:shortmess_save = &shortmess$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+stmtparser	src/Syntax.hs	/^    =  do  m_reserved "if"$/;"	f
+table	src/Syntax.hs	/^table =$/;"	f
+term	src/Syntax.hs	/^term =  do m_reserved "getchar"$/;"	f
+typeparser	src/Syntax.hs	/^    =   (m_reserved "int" >> return TyInt)$/;"	f
+usedInEnv	src/TypeChecker.hs	/^usedInEnv env name = filter (\\x -> fst x == name) env$/;"	f
+varparser	src/Syntax.hs	/^    = do t <- typeparser$/;"	f
