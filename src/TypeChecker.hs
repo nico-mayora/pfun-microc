@@ -33,13 +33,13 @@ checkProgram prg =
     then typeErrors
     else nameErrors
   where
-    nameErrors = checkNames prg []
-    typeErrors = checkTypes prg
+    (env, nameErrors) = checkNames prg []
+    typeErrors = checkTypes env prg
 
 type EnvError = (Env, [Error])
 
-checkNames :: Program -> Env -> [Error]
-checkNames (Program mb) env = snd $ foldl processLine (env, []) mb
+checkNames :: Program -> Env -> EnvError
+checkNames (Program mb) env = foldl processLine (env, []) mb
   where
     processLine envErrors (Com stmt) = (fst envErrors, checkNamesStmt envErrors stmt)
     processLine envErrors (Decl varDecl) = checkNamesDecl envErrors varDecl
@@ -76,7 +76,7 @@ type TypeError = (Type, [Error])
 checkTypes :: Env -> Program -> [Error]
 checkTypes env (Program mb) = snd $ foldl processLine (env, []) mb
   where
-    processLine envErrors (Com stmt) = (fst envErrors, snd $ processStmt envErrors stmt)
+    processLine envErrors (Com stmt) = processStmt envErrors stmt
     processLine envErrors _ = envErrors
 
 errBody :: Env -> Body -> [Error]
@@ -92,7 +92,7 @@ processStmt (env, errs) (While expr body) =
    in (env, errs ++ snd expTup ++ [Expected TyInt TyChar | fst expTup /= TyInt] ++ errBody env body)
 processStmt (env, errs) (PutChar expr) =
   let expTup = expType env expr
-   in (env, errs ++ snd expTup ++ [Expected TyChar TyInt | fst expTup /= TyInt])
+   in (env, errs ++ snd expTup ++ [Expected TyChar TyInt | fst expTup == TyInt])
 
 expType :: Env -> Expr -> TypeError
 expType env (Var name) = (snd . head $ filter (\x -> fst x == name) env, [])
@@ -108,7 +108,7 @@ expType env (Binary bop exp1 exp2) -- TODO: revisar cantidad & orden de errores
           (TyInt, TyChar) -> [Expected TyInt TyChar]
           (TyChar, TyInt) -> [Expected TyChar TyInt]
           _ -> []
-     in (fst expTup1, snd expTup1 ++ snd expTup2 ++ err)
+     in (TyInt, snd expTup1 ++ snd expTup2 ++ err)
   | otherwise =
     let err = case (fst expTup1, fst expTup2) of
           (TyInt, TyInt) -> []
@@ -121,4 +121,4 @@ expType env (Binary bop exp1 exp2) -- TODO: revisar cantidad & orden de errores
 expType env (Assign name exp) =
   let nameType = snd . head $ filter (\x -> fst x == name) env
       expTup = expType env exp
-   in (nameType, [Expected nameType $ fst expTup | nameType /= fst expTup])
+   in (nameType, snd expTup ++ [Expected nameType $ fst expTup | nameType /= fst expTup])
