@@ -1,0 +1,33 @@
+interp :: Code -> Code -> Conf -> IO Conf
+interp _ [] final_state = return final_state
+interp before after@(JUMP shft : rest) state =
+    let pc = JUMP shft in
+    if shft > 0
+    then do -- jump forwards
+        let (skipped, interpNext) = splitAt shft after
+        let reversed = reverse skipped
+        interp (reversed ++ before) interpNext state
+    else do -- jump backwards
+        let shft = abs shft
+        let (skipped, new_before) = splitAt shft before
+        let reversed = reverse skipped
+        interp new_before (reversed ++ after) state
+interp before after@(JMPZ shft : rest) state = undefined
+interp before after state = do
+    let new_state = interpJustOne (head after) state
+    new_state' <- new_state
+    interp (head after : before) (tail after) new_state'
+
+performJump :: [Instr] -> [Instr] -> Conf -> IO Conf
+performJump before after@(JUMP shft : rest) state =
+    let pc = JUMP shft in
+    if shft > 0
+    then do -- jump forwards
+        let (skipped, interpNext) = splitAt shft after
+        let reversed = reverse skipped
+        interp (reversed ++ before) interpNext state
+    else do -- jump backwards
+        let shft = abs shft
+        let (skipped, new_before) = splitAt shft before
+        let reversed = reverse skipped
+        interp new_before (reversed ++ after) state

@@ -3,6 +3,7 @@
 
 module Generator where
 
+import Data.Char (ord)
 import Syntax
 import MachineLang
 
@@ -63,5 +64,5 @@ generateExpr (Binary Mod expr1 expr2) = generateExpr expr2 ++ generateExpr expr1
 
 generateExpr (Assign name expr) = generateExpr expr ++ [STORE name]
 
-charToInt :: Char -> Integer -- FALTA IMPLEMENTAR
-charToInt c = undefined
+charToInt :: Char -> Integer
+charToInt = toInteger . ord
