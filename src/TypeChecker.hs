@@ -22,10 +22,6 @@ instance Show Error where
 
 type Env = [(Name, Type)]
 
-getProg :: Either String Program -> Program
-getProg (Right p) = p
-getProg (Left _) = Program []
-
 -- Implementar
 checkProgram :: Program -> [Error]
 checkProgram prg =

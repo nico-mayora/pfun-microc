@@ -41,6 +41,3 @@ process opts (ast,cod) = do when (elem DumpOpt  opts) (print ast)
                             when (elem DumpMach opts) (print cod)
                             interp [] cod ([],[])
                             return ()
-
-mach = generate . getProg . parser $ "int x; int y; x = 1; y = 0; if (x || y) {  putchar('a'); } else {  putchar('b'); }; "
-run = interp [] mach ([],[])
