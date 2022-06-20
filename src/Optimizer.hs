@@ -27,9 +27,9 @@ folding (PutChar expr) = PutChar $ foldExpr expr
 
 foldExpr :: Expr -> Expr
 foldExpr (Binary bOp expr1 expr2)
-  | tieneAsig expr1 || tieneAsig expr2 = Binary bOp foldExpr1 foldExpr2
   | esNeutro foldExpr1 bOp = foldExpr2
   | esNeutro foldExpr2 bOp = foldExpr1
+  | tieneAsig expr1 || tieneAsig expr2 = Binary bOp foldExpr1 foldExpr2
   | esNulo foldExpr1 bOp = foldExpr1
   | esNulo foldExpr2 bOp = foldExpr2
   | otherwise = reduce bOp foldExpr1 foldExpr2
