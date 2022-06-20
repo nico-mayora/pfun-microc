@@ -19,13 +19,12 @@ interp _ [] final_state = return final_state
 interp before after@(JUMP shft : rest) state = performJump before after shft state
 interp before after@(JMPZ shft : rest) (stack, env) = do
   let conditional = head stack
-  if shft == 0
+  if conditional == 0
     then performJump before after shft (tail stack, env)
     else interp (head after : before) (tail after) (tail stack, env)
 interp before after state = do
-  let new_state = interpJustOne (head after) state
-  new_state' <- new_state
-  interp (head after : before) (tail after) new_state'
+  new_state <- interpJustOne (head after) state
+  interp (head after : before) (tail after) new_state
 
 performJump :: Code -> Code -> Int -> Conf -> IO Conf
 performJump before after shft state =
@@ -37,8 +36,7 @@ performJump before after shft state =
       interp (reversed ++ before) interpNext state
     else do
       -- jump backwards
-      let shft = abs shft
-      let (skipped, new_before) = splitAt shft before
+      let (skipped, new_before) = splitAt (abs shft) before
       let reversed = reverse skipped
       interp new_before (reversed ++ after) state
 
@@ -53,13 +51,14 @@ interpJustOne DIV (stack, env) = return (applyBinOper div stack, env)
 interpJustOne MOD (stack, env) = return (applyBinOper mod stack, env)
 interpJustOne CMP (stack, env) = do
   let (op1, op2, newStack) = popTwoFromStack stack
-  case compare op1 op2 of
-    EQ -> return (0 : newStack, env)
-    LT -> return ((-1) : newStack, env)
-    GT -> return (1 : newStack, env)
+  let ret = case compare op1 op2 of
+        LT -> ((-1) : newStack, env) 
+        EQ -> (0 : newStack, env) 
+        GT -> (1 : newStack, env)
+  return ret
 interpJustOne (PUSH int) (stack, env) = return (int : stack, env)
-interpJustOne (LOAD var) (stack, env) = return (getVarValue var [] : stack, env)
-interpJustOne (STORE var) (stack, env) = return (tail stack, (var, head stack) : env)
+interpJustOne (LOAD var) (stack, env) = return (snd (head $ filter (\x -> fst x == var) env) : stack, env)
+interpJustOne (STORE var) (stack, env) = return (tail stack, (var, head stack) : filter (\x -> fst x /= var) env)
 interpJustOne READ (stack, env) = do
   c <- getChar
   let asciiCode = toInteger . ord $ c
@@ -81,9 +80,4 @@ applyBinOper fn stack = fn op1 op2 : drop 2 stack
     op1 = head stack
     op2 = stack !! 1
 
-getVarValue :: Var -> Env -> Integer
-getVarValue id [] = undefined -- assume it's present
-getVarValue id (curr : rest) =
-  if fst curr == id
-    then snd curr
-    else getVarValue id rest
+-- getIntCmp :: 

@@ -27,6 +27,7 @@ folding (PutChar expr) = PutChar $ foldExpr expr
 
 foldExpr :: Expr -> Expr
 foldExpr (Binary bOp expr1 expr2)
+  | tieneAsig expr1 || tieneAsig expr2 = Binary bOp foldExpr1 foldExpr2
   | esNeutro foldExpr1 bOp = foldExpr2
   | esNeutro foldExpr2 bOp = foldExpr1
   | esNulo foldExpr1 bOp = foldExpr1
@@ -67,6 +68,13 @@ reduce Mult (NatLit num1) (NatLit num2) = NatLit (num1 * num2)
 reduce Div (NatLit num1) (NatLit num2) = NatLit (num1 `div` num2)
 reduce Mod (NatLit num1) (NatLit num2) = NatLit (num1 `mod` num2)
 reduce bOp expr1 expr2 = Binary bOp expr1 expr2
+
+
+tieneAsig :: Expr -> Bool
+tieneAsig (Assign _ _) = True
+tieneAsig (Unary    _ expr) = tieneAsig expr
+tieneAsig (Binary _ expr1 expr2) = tieneAsig expr1 || tieneAsig expr2
+tieneAsig _ = False
 
 ------------------------------------------------------------------- 
 
